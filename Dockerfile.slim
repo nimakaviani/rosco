@@ -1,4 +1,5 @@
-FROM alpine:3.11
+# FROM alpine:3.11
+FROM python:3.7-alpine3.11
 MAINTAINER sig-platform@spinnaker.io
 COPY rosco-web/build/install/rosco /opt/rosco
 COPY rosco-web/config              /opt/rosco
@@ -25,6 +26,11 @@ RUN wget https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get &&
   chmod +x get && \
   ./get && \
   rm get
+
+# Install cdk8s
+RUN apk --no-cache add --update nodejs npm
+RUN npm install -g cdk8s-cli
+RUN pip3 install pipenv
 
 RUN mkdir kustomize && \
   curl -s -L https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/v3.3.0/kustomize_v3.3.0_linux_amd64.tar.gz |\
