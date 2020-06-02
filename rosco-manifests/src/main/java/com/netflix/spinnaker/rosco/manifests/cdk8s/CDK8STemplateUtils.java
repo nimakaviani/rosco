@@ -94,7 +94,7 @@ public class CDK8STemplateUtils {
                 + "cdk8s import --language %s &>/dev/null && "
                 + "cdk8s synth &>/dev/null && "
                 + "cat dist/* ",
-            outputPath.toString(), "python");
+            outputPath.toString(), request.getLanguage().toLowerCase());
 
     log.info(">> executing ... ", commandString);
     List<String> command = new ArrayList<>();

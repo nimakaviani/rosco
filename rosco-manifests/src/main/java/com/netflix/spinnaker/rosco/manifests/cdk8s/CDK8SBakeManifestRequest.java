@@ -9,4 +9,5 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 public class CDK8SBakeManifestRequest extends BakeManifestRequest {
   private Artifact inputArtifact;
+  private String language;
 }
